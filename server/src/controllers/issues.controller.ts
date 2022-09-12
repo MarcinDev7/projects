@@ -9,6 +9,15 @@ const get = async (req, res, next) => {
   }
 };
 
+const findOne = async (req, res, next) => {
+  try {
+    res.json(await IssuesService.findOne(req.query.id));
+  } catch (err) {
+    console.error(`Fetching for issues failed`, err.message);
+    next(err);
+  }
+};
+
 const create = async (req, res, next) => {
   try {
     res.json(await IssuesService.create(req.body));
@@ -37,8 +46,9 @@ const remove = async (req, res, next) => {
 };
 
 export const IssuesController = {
-  get,
   create,
-  update,
+  findOne,
+  get,
   remove,
+  update,
 };
