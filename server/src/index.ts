@@ -1,12 +1,15 @@
 import express from "express";
 import * as dotenv from "dotenv";
+import router from "./router";
+import { connectToDb } from "./services/db.service";
+
 dotenv.config();
 const app = express();
+connectToDb().then(() => {
+  app.use(express.json());
+  app.use(router);
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(process.env.PORT, () => {
-  return console.log(`Server is running`);
+  app.listen(process.env.PORT, () => {
+    return console.log(`Server is running`);
+  });
 });
