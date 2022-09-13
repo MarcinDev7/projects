@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-enum IssueStatuses {
+export enum IssueStatuses {
   Open = "open",
   Closed = "closed",
   Pending = "pending",

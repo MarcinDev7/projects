@@ -1,17 +1,19 @@
 import { IIssue, IssueModel } from "../models/issue.model";
 
-async function getMultiple(page = 1) {}
+async function getMultiple(page = 1) {
+  return await IssueModel.find();
+}
 
 async function findOne(id: string) {
-  await IssueModel.findById(id);
+  return await IssueModel.findById(id);
 }
 
 async function create(issue: IIssue) {
-  await IssueModel.create({ issue });
+  return await IssueModel.create(issue);
 }
 
 async function update(id: string, issue) {
-  await IssueModel.updateOne(
+  return await IssueModel.updateOne(
     { _id: id },
     {
       status: issue.status,
@@ -22,7 +24,7 @@ async function update(id: string, issue) {
 }
 
 async function remove(id: string) {
-  await IssueModel.deleteOne({ _id: id });
+  return await IssueModel.deleteOne({ _id: id });
 }
 
 export const IssuesService = {
