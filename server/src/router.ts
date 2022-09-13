@@ -9,6 +9,8 @@ router.get("/issues/:id", IssuesController.findOne);
 
 router.delete("/issues/:id", IssuesController.remove);
 
-router.patch("/issues/:id", IssuesController.update);
+router.put("/issues/:id", IssuesController.update);
+
+router.post("/issues", IssuesController.create);
 
 export default router;
